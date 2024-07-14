@@ -22,5 +22,23 @@
 * Decide which options to provide (i.e. dueDates nav, project nav, notes, a dialog for every todo which contain its title, description, checklist {if any} and it's priority)
 * Create a visual plan of the app
 
-### July 09, 2024
-* 
+### July 10, 2024
+* Added a button which opens a new dialog box which further contains title, description, select options, and an editable checklist.
+
+### July 11, 2024
+* Added other buttons and span (without functionality) 
+
+### July 12, 2024
+* Added functionality to `Add Project` button
+* Add Unique id's to todo, project and note classes
+
+### July 13, 2024
+* Added an edit button to change name of project and hence respective name in todos
+* Added `controller.js` for easy handling of code
+
+### July 14, 2024
+* Added functionality to `Add Note` button
+* Added editable dialog box for `To-dos` and `Notes`
+* Handled the storage mess in `storagehandler.js`
+
+>I forgot to add devLog regularly that's why the vague logs.
