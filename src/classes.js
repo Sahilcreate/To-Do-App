@@ -1,6 +1,6 @@
 
 
-class todoTemp {
+class TodoTemp {
     constructor([title, description, projectId, priority, dueDate, submitDate, checklist, checked]) {
         this.title = title;
         this.description = description;
@@ -14,23 +14,24 @@ class todoTemp {
     }
 }
 
-class projectTemp {
+class ProjectTemp {
     constructor([title]) {
         this.title = title;
         this.projectId = `${Math.random().toString(36).substring(2) + Date.now().toString(36)}`;
     }
 }
 
-class noteTemp {
-    constructor([title, description]) {
+class NoteTemp {
+    constructor([title, description, submitDate]) {
         this.title = title;
         this.description = description;
+        this.submitDate = submitDate;
         this.noteId = `${Math.random().toString(36).substring(2) + Date.now().toString(36)}`;
     }
 }
 
 export {
-    todoTemp,
-    projectTemp,
-    noteTemp
+    TodoTemp,
+    ProjectTemp,
+    NoteTemp
 }

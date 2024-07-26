@@ -1,4 +1,4 @@
-import { todoTemp, projectTemp, noteTemp } from "./classes";
+import { TodoTemp, ProjectTemp, NoteTemp } from "./classes";
 import { saveTodo, saveProject, saveNote, loadTodos, loadProjects, loadNotes, updateTodoCheckStatus, deleteProject, updateProjectName, updateTodo, deleteTodo, updateNote, deleteNote } from "./storagehandler";
 import { makeNewTodoBox, makeNewProjectBox, makeNewNoteBox } from "./domrelated";
 import { format, addDays } from "date-fns";
@@ -36,7 +36,7 @@ function createChecklistItem(itemText, isChecked) {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
-    deleteBtn.className = 'delete-item-button';
+    deleteBtn.className = 'delete-item-btn';
     deleteBtn.addEventListener('click', 
         function () {
             listItem.remove();
@@ -97,7 +97,7 @@ function newTodoDialogBtnHandler() {
                 );
             });
 
-            const todo = new todoTemp([titleText, descriptionText, projectId, priority, formattedDueDate, formattedSubmitDate, checklistItems, false]);
+            const todo = new TodoTemp([titleText, descriptionText, projectId, priority, formattedDueDate, formattedSubmitDate, checklistItems, false]);
 
             saveTodo(todo);
 
@@ -120,7 +120,7 @@ function newProjectDialogBtnHandler() {
         () => {
             const titleText = document.getElementById('project-title-input').value;
 
-            const project = new projectTemp([titleText]);
+            const project = new ProjectTemp([titleText]);
             const projectId = project.projectId;
 
 
@@ -146,8 +146,10 @@ function newNoteDialogBtnHandler() {
         () => {
             const titleText = document.getElementById('note-title-input').value;
             const descriptionText = document.getElementById('note-description-input').value;
+            const submitDate = new Date();
+            const formattedSubmitDate = format(submitDate, 'yyyy-MM-dd');
 
-            const note = new noteTemp([titleText, descriptionText]);
+            const note = new NoteTemp([titleText, descriptionText, formattedSubmitDate]);
 
             saveNote(note);
             document.getElementById('note-dialog').close();
@@ -236,7 +238,11 @@ function createTodoCard(todo) {
     checkboxContainer.addEventListener('change', 
         (event) => {
             updateTodoCheckStatus(todo.todoId, event.target.checked);
-            document.querySelector(`[data-project-id="${todo.projectId}"]`).querySelector('.project-btn').click();
+
+            setTimeout(() => {
+                document.querySelector(`.clicked-btn`).click();
+            }, 100)
+            //document.querySelector(`.clicked-btn`).click();
             // document.querySelector(`[data-todo-id="${todo.todoId}"]`).classList.toggle('todo-checked', event.target.checked);
         }
     )
@@ -291,6 +297,12 @@ function createNoteCard(note) {
     descriptionContainer.className = 'note-description-container';
     descriptionContainer.textContent = truncateText(note.description, 100);
     cardContainer.appendChild(descriptionContainer);
+
+    //add note submit button
+    const submitDateContainer = document.createElement('div');
+    submitDateContainer.className = 'note-submit-date-container';
+    submitDateContainer.textContent = `Submitted on: ${note.submitDate}`;
+    cardContainer.appendChild(submitDateContainer);
 
     return cardContainer;
 }

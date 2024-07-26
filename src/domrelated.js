@@ -14,7 +14,7 @@ function makeAddTodoBtn() {
         document.getElementById('todo-dialog').showModal();
         newTodoDialogBtnHandler();
     })
-    document.querySelector('header').appendChild(addToDoBtn);
+    document.querySelector('#header-nav-container').appendChild(addToDoBtn);
 }
 
 function makeAddProjectBtn() {
@@ -66,6 +66,7 @@ function makeNewTodoBox() {
     titleInputField.className = 'dialog-input';
     titleInputField.id = 'dialog-title-input';
     titleInputField.type = 'text';
+    titleInputField.maxLength = '20';
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -78,10 +79,9 @@ function makeNewTodoBox() {
     descriptionLabel.className = 'dialog-label dialog-description-label';
     descriptionLabel.htmlFor = 'dialog-description-input';
 
-    const descriptionInputField = document.createElement('input');
+    const descriptionInputField = document.createElement('textarea');
     descriptionInputField.className = 'dialog-input';
     descriptionInputField.id = 'dialog-description-input';
-    descriptionInputField.type = 'textarea';
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -196,7 +196,6 @@ function makeNewTodoBox() {
 
     checklistInputSection.appendChild(checklistInputField);
     checklistInputSection.appendChild(checklistInputAddBtn);
-    checklistInputSection.appendChild(checklistListField);
 
     titlePara.appendChild(titleLabel);
     titlePara.appendChild(titleInputField);
@@ -210,6 +209,7 @@ function makeNewTodoBox() {
     btnGroupPara.appendChild(deleteTodoBtn);
     checklistPara.appendChild(checklistLabel);
     checklistPara.appendChild(checklistInputSection);
+    checklistPara.appendChild(checklistListField);
     dueDatepara.appendChild(dueDateLabel);
     dueDatepara.appendChild(dueDateSelectionField);
 
@@ -250,10 +250,11 @@ function makeNewProjectBox() {
     titleInputField.type = 'text';
     titleInputField.id = 'project-title-input';
     titleInputField.className = 'dialog-input';
+    titleInputField.maxLength = '20';
 
     //make btn group para
     const btnGroupPara = document.createElement('p');
-    btnGroupPara.className = 'dialog-btn-group-para';
+    btnGroupPara.className = 'dialog-btn-group-para dialog-para';
     btnGroupPara.id = 'project-btn-group';
 
     //make save btn
@@ -307,6 +308,7 @@ function makeNewNoteBox() {
     titleInputField.type = 'text';
     titleInputField.id = 'note-title-input';
     titleInputField.className = 'dialog-input';
+    titleInputField.maxLength = '20';
 
     //make description area
     const descriptionPara = document.createElement('p');
@@ -321,14 +323,13 @@ function makeNewNoteBox() {
     descriptionLabel.textContent = 'Description'
 
     //make description input field
-    const descriptionInputField = document.createElement('input');
-    descriptionInputField.type = 'text';
+    const descriptionInputField = document.createElement('textarea');
     descriptionInputField.id = 'note-description-input';
     descriptionInputField.className = 'dialog-input';
 
     //make btn group para
     const btnGroupPara = document.createElement('p');
-    btnGroupPara.className = 'dialog-btn-group-para';
+    btnGroupPara.className = 'dialog-btn-group-para dialog-para';
     btnGroupPara.id = 'note-btn-group';
 
     //make save btn

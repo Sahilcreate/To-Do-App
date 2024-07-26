@@ -1,7 +1,7 @@
 import { makeAddTodoBtn, makeAddProjectBtn, makeAddNoteBtn } from "./domrelated";
 import { refreshProjects, noteBtnController, todayBtnController, nextSevenDaysBtnController, allToDosBtnController } from "./controller";
 import { saveProject, loadProjects } from "./storagehandler";
-import { projectTemp } from "./classes";
+import { ProjectTemp } from "./classes";
 
 function renderAll() {
     // makeAddTodoBtn();
@@ -9,7 +9,7 @@ function renderAll() {
     // makeAddNoteBtn();
     const projectList = loadProjects();
     if(projectList.length === 0) {
-        saveProject(new projectTemp(['Default']));
+        saveProject(new ProjectTemp(['Default']));
     }
     
 
@@ -40,13 +40,19 @@ function renderAll() {
         document.querySelector('header').appendChild(logoContainer);
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+        //header container other than logo
+        const headerNavContainer = document.createElement('div');
+        headerNavContainer.id = 'header-nav-container';
+        document.querySelector('header').appendChild(headerNavContainer);
+
         //navigation text in header
         const navTextContainer = document.createElement('div');
         navTextContainer.id = 'nav-text-container';
         const navTextSpan = document.createElement('span');
         navTextSpan.id = 'nav-text-span';
         navTextContainer.appendChild(navTextSpan);
-        document.querySelector('header').appendChild(navTextContainer);
+        headerNavContainer.appendChild(navTextContainer)
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         //Add-ToDo Button

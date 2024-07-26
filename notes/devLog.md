@@ -42,3 +42,10 @@
 * Handled the storage mess in `storagehandler.js`
 
 >I forgot to add devLog regularly that's why the vague logs.
+
+### July 15, 2024 - July 20, 2024
+>I was shifting so wasn't able to do much.
+
+### July 26, 2024
+* Life happened. Just completed it. I am tired of it.
+>NOTE TO SELF: learn CSS and design.
