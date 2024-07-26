@@ -101,7 +101,7 @@ function makeNewTodoBox() {
     checklistInputField.className = 'dialog-input dialog-checklist-input';
     checklistInputField.id = 'checklist-input'
     checklistInputField.type = 'text';
-    checklistInputField.maxLength = '100';
+    checklistInputField.maxLength = '60';
 
     const checklistInputAddBtn = document.createElement('button');
     checklistInputAddBtn.className = 'dialog-checklist-add-btn';
